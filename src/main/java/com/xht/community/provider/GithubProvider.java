@@ -58,7 +58,7 @@ public class GithubProvider {
 
         //接收返回信息
         try (Response response = client.newCall(request).execute()) {
-            //用String接收,然后使用fastjson转为对象
+            //用String接收,然后使用fastjson将String转换为对象接收,此处的String实际上就是JSON格式的String
             String string = response.body().string();
             GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
             return githubUser;
